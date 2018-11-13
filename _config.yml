@@ -1,8 +1,8 @@
 # Site settings
-title: 爱上一块放糖，可我的家里没有咖啡 # 你的博客名字，可以定义修订
+title: 爱上一块方糖，可我的家里没有咖啡 # 你的博客名字，可以定义修订
 header-img: "img/green.jpg"
 tagline: "cn"  
-description: "这是我的博客"  # 一句话描述你的博客
+description: "个人日记，工作心得以及吹牛逼"  # 一句话描述你的博客
 baseurl: ""
 url: "http://square-sweet.one"  # 此处填写你的博客地址 
 
@@ -43,7 +43,7 @@ defaults:
       type: "posts"
     values:
       layout: "post"
-      author: "你的名字" # 你的名字
+      author: "Q" # 你的名字
       header-img: "img/green.jpg" # We don't want posts without a header image, that whould mean white on white
 
 # Comments 
