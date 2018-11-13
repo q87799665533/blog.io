@@ -9,7 +9,7 @@ url: "http://square-sweet.one"  # 此处填写你的博客地址
 # About/contact
 owner: 
   name: "Q" # 填写作者信息：名字
-  email: 727849003@qq.com # 填写作者信息：邮箱
+  email: "727849003@qq.com" # 填写作者信息：邮箱
   bio: "本博客诞生于2018-11-13" # 填写作者信息：博客描述
 
 # Data
