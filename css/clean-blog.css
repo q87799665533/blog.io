@@ -330,6 +330,7 @@ hr.small {
   }
   .post-preview > a > .post-subtitle {
     font-size: 10px;
+    
     color:gray;
     text-decoration: line-through;
   }
