@@ -16,3 +16,34 @@
     color: #fff;
     background-color: #000;
   }
+
+  .tips-wrap {
+    text-align: center;
+    padding-right: 0.2rem;
+  }
+
+  .tips-wrap img {
+    width: 5rem;
+  }
+
+  .lity {
+    background: rgba(0, 0, 0, 0.8);
+  }
+
+  .lity-content {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .lity-content:after {
+    box-shadow: none;
+  }
+
+  .lity-wrap:before {
+    margin-right: 0;
+    height: 0;
+  }
+
+  .lity-container {
+    display: flex;
+  }
