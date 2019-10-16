@@ -11,13 +11,15 @@
     }
 
     function init() {
-      // if (is_neizhi()){//只要再qq或者微信里面 都引导去端外打开
-      //   lity($("#lity-tips").html());
-      // } 
+      
     }
 
     function bindEvents() {
       $(".wrap").on("click",function () {
+        if (is_neizhi()){//只要再qq或者微信里面 都引导去端外打开
+          lity($("#lity-tips").html());
+          return;
+        } 
         var version = navigator.appVersion.toLocaleLowerCase();
         if (version.indexOf("iphone") > 0) {
           window.location.href = "com.tzt.glscjpb://action=http://action:10061/?fullscreen=1&&noTitle=1&&url=/activity/activity191111/preHeat.html";
