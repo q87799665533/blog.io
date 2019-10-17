@@ -15,7 +15,6 @@
     }
 
     function init() {
-      alert(navigator.userAgent.toLowerCase());
       if (is_neizhi()){//引导
         lity($("#lity-tips").html());
         return;
