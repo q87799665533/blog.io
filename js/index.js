@@ -1,25 +1,28 @@
     function is_neizhi() {
       var ua = navigator.userAgent.toLowerCase();
-      if (ua.match(/MicroMessenger/i) == "micromessenger") {
+      var version = navigator.appVersion.toLocaleLowerCase();
+      if (ua.indexOf("micromessenger")>-1) {
         return "weixin";
-      } else if (ua.match(/QQ/i) == "qq" && ua.indexOf('safari') == -1) {
-        return "QQ";
-      } else if (ua.match(/Alipay/i) == "alipay" && payway == 2) {
-        return "alipay";
+      }else if (ua.indexOf("mqqbrowser")>-1 && version.indexOf("iphone") > 0) {//iOS QQ浏览器
+        alert("请尝试用其他浏览器唤起国联尊宝");
+        return "iphoneQQBrowser";
+      }else if (ua.indexOf("mqqbrowser")>-1 && version.indexOf("android") > 0) {//android QQ内外
+        return false;
+      }else if(ua.indexOf("qq")>-1 && version.indexOf("iphone") > 0){//iOS QQ
+        return "iPhoneQQ";
       }
       return false;
     }
 
     function init() {
       alert(navigator.userAgent.toLowerCase());
+      if (is_neizhi()){//引导
+        lity($("#lity-tips").html());
+        return;
+      }
     }
-
     function bindEvents() {
-      $(".wrap").on("click",function () {
-        if (is_neizhi()){//只要再qq或者微信里面 都引导去端外打开
-          lity($("#lity-tips").html());
-          return;
-        } 
+      $(".wrap").on("click",function () { 
         var version = navigator.appVersion.toLocaleLowerCase();
         if (version.indexOf("iphone") > 0) {
           window.location.href = "com.tzt.glscjpb://action=http://action:10061/?fullscreen=1&&noTitle=1&&url=/activity/activity191111/preHeat.html";
