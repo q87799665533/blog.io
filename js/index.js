@@ -11,7 +11,7 @@
     }
 
     function init() {
-      
+      alert(navigator.userAgent.toLowerCase());
     }
 
     function bindEvents() {
