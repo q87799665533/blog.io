@@ -54,7 +54,16 @@ define(function (require) {
       focus = false;
       if(!focus){
         setTimeout(function () {
-          temporaryRepair();
+        var ua = navigator.userAgent.toLowerCase();
+         var u = navigator.userAgent.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
+         if(ua.match(/MicroMessenger/i) == 'micromessenger'&&!!u){//在iphone 微信中
+            var osVersion  =  navigator.userAgent.match(/iPhone\sOS\s([\d\_]+)/i);
+            var osArr = osVersion.length>=1? osVersion[1].split('_'):[];
+            var newOS = osArr.length>=2 && (osArr[0]>11)
+            if(newOS){ //如果iphone版本号>=12
+              temporaryRepair();
+            }
+         }
        },200)
       }
     });
@@ -129,7 +138,6 @@ define(function (require) {
   }
 
   $(function () {
-    alert("6");
     // 绑定事件
     bindEvents();
     init();
