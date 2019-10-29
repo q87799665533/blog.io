@@ -102,6 +102,9 @@ define(function (require) {
   };
 
   $(function () {
+    $(window).resize(function(){
+      alert("3");
+    });
     // 绑定事件
     bindEvents();
     init();
