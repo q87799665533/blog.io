@@ -55,14 +55,9 @@ define(function (require) {
       if(!focus){
         setTimeout(function () {
         var ua = navigator.userAgent.toLowerCase();
-         var u = navigator.userAgent.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
-         if(ua.match(/MicroMessenger/i) == 'micromessenger'&&!!u){//在iphone 微信中
-            var osVersion  =  navigator.userAgent.match(/iPhone\sOS\s([\d\_]+)/i);
-            var osArr = osVersion.length>=1? osVersion[1].split('_'):[];
-            var newOS = osArr.length>=2 && (osArr[0]>11)
-            if(newOS){ //如果iphone版本号>=12
-              temporaryRepair();
-            }
+        var version = navigator.appVersion.toLocaleLowerCase();
+         if(ua.indexOf("micromessenger")>0 && version.indexOf("iphone") > 0){//在iphone 微信中
+            temporaryRepair();
          }
        },200)
       }
