@@ -105,6 +105,7 @@ define(function (require) {
     $(window).resize(function(){
       alert("3");
     });
+    alert("4");
     // 绑定事件
     bindEvents();
     init();
