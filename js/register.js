@@ -6,6 +6,7 @@ define(function (require) {
   var toast = require('toast');
   var wxShare = require('wxShare');
   var copyModal;
+  var focus = false;
 
   function init() {
     var sessionId = '';
@@ -42,6 +43,19 @@ define(function (require) {
       } else {
         countDown();
         getMobileCode($('.mobile_input').val());
+      }
+    });
+
+    $('input').on('focus',function (){
+      focus = true;
+    });
+
+    $('input').on('blur',function (){
+      focus = false;
+      if(!focus){
+        setTimeout(function () {
+          temporaryRepair();
+       },200)
       }
     });
   }
@@ -101,11 +115,21 @@ define(function (require) {
     });
   };
 
+  function temporaryRepair(){
+    var currentPosition,timer;
+    var speed=1;//页面滚动距离
+    timer=setInterval(function(){
+       currentPosition=document.documentElement.scrollTop || document.body.scrollTop;
+       currentPosition-=speed;
+       window.scrollTo(0,currentPosition);//页面向上滚动
+       currentPosition+=speed; //speed变量
+       window.scrollTo(0,currentPosition);//页面向下滚动
+       clearInterval(timer);
+    },1);
+  }
+
   $(function () {
-    window.onresize = function(){
-      alert("1");
-    }
-    alert("5");
+    alert("6");
     // 绑定事件
     bindEvents();
     init();
