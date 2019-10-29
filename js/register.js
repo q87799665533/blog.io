@@ -102,10 +102,10 @@ define(function (require) {
   };
 
   $(function () {
-    $(window).resize(function(){
-      alert("3");
-    });
-    alert("4");
+    window.onresize = function(){
+      alert("1");
+    }
+    alert("5");
     // 绑定事件
     bindEvents();
     init();
