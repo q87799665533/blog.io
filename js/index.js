@@ -1,44 +1,56 @@
-    function is_neizhi() {
-      var ua = navigator.userAgent.toLowerCase();
-      var version = navigator.appVersion.toLocaleLowerCase();
-      if (ua.indexOf("micromessenger")>-1) {
-        return "weixin";
-      }else if (ua.indexOf("mqqbrowser")>-1 && version.indexOf("iphone") > 0) {//iOS QQ浏览器
-        alert("请尝试用其他浏览器唤起国联尊宝");
-        return "iphoneQQBrowser";
-      }else if (ua.indexOf("mqqbrowser")>-1 && version.indexOf("android") > 0) {//android QQ内外
-        return false;
-      }else if(ua.indexOf("qq")>-1 && version.indexOf("iphone") > 0){//iOS QQ
-        return "iPhoneQQ";
-      }
-      return false;
+define(function (require) {
+  var apis = require('apis/index');
+  var jsrender = require('jsrender');
+  var fastclick = require('fastclick');
+  var wxShare = require('wxShare');
+
+  function init() {
+    var sessionId = '';
+    if (window.location.search.split('?sessionId=')[1]) {
+      sessionId = window.location.search.split('?sessionId=')[1].split('&')[0];
     }
-
-    function init() {
-      if (is_neizhi()){//引导
-        lity($("#lity-tips").html());
-        return;
-      }
-    }
-    function bindEvents() {
-      $(".wrap").on("click",function () { 
-        var version = navigator.appVersion.toLocaleLowerCase();
-        if (version.indexOf("iphone") > 0) {
-          window.location.href = "com.tzt.glscjpb://action=http://action:10061/?fullscreen=1&&noTitle=1&&url=/activity/activity191111/preHeat.html";
-        } else {
-          window.location.href = "glsc://zunbao.com?action=http://action:10061/?fullscreen=1&&noTitle=1&&url=/activity/activity191111/preHeat.html";  
-        }
-        window.setTimeout(function () {
-          if (!document.hidden) {
-            window.location.href = "https://www.glsc.com.cn/glzb/";//打开app下载地址
-          }
-        }, 2500)
-      });
-    }
-
-    $(function () {
-
-      init();
-
-      bindEvents();
+    localStorage.setItem('sessionId', sessionId);
+    getAwards();
+    fastclick.attach(document.body);
+    wxShare.share(function () {
+      apis.fetchShare({});
     });
+  }
+
+  function bindEvents() {
+    $(document).on('click', '.awardTitleImg', function () {
+     if ($(this).data('type') === 'down') {
+       $('.award').fadeIn();
+       $(this).data('type', 'up');
+       $(this).attr('src', './images/up.png');
+     } else {
+       $('.award').fadeOut();
+       $(this).data('type', 'down');
+       $(this).attr('src', './images/down.png');
+     }
+    });
+    $(document).on('click', '.startBtn', function () {
+      window.location.href='./game.html';
+    });
+  }
+
+  function getAwards() {
+    // 中奖纪录
+    apis.fetchUserAwards({
+      pageNum: 0,
+      pageSize: 100,
+    }).done(function(data) {
+      var award = data.result;
+      var awardTpl = $.templates('#award-list').render({ awardList: award});
+      $('.awardBox').find('*').not('#award-list').remove();
+      $('.awardBox').append(awardTpl);
+      $('.loader').hide();
+    });
+  };
+
+  $(function () {
+    // 绑定事件
+    bindEvents();
+    init();
+  });
+});
