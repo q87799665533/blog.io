@@ -2,7 +2,7 @@ define(function (require) {
   var apis = require('apis/index');
   var jsrender = require('jsrender');
   var lity = require('lity');
-  var fastclick = require('fastclick');
+  //var fastclick = require('fastclick');
   var toast = require('toast');
   var wxShare = require('wxShare');
   var copyModal;
@@ -14,7 +14,7 @@ define(function (require) {
       sessionId = window.location.search.split('?sessionId=')[1].split('&')[0];
     }
     localStorage.setItem('sessionId', sessionId);
-    fastclick.attach(document.body);
+    //fastclick.attach(document.body);
     apis.activity191111WXPointRecord();
     // wxShare.share(function () {
     //   apis.fetchShare({});
