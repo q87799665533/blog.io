@@ -172,10 +172,10 @@ body {
   box-sizing: border-box;
   width: 100%;
   border: 1px solid #ccc;
-  padding: 0.1rem;
+  padding-left: 0.1rem;
   font-size: 13px;
   border-radius: 0.1rem;
-  line-height: 0.6rem;
+  line-height: 1rem;
 }
 
 .code_input {
