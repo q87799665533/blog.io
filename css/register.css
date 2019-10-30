@@ -106,6 +106,7 @@ body {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  cursor: pointer;
 }
 
 .gzh {
@@ -145,6 +146,7 @@ body {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  cursor: pointer;
 }
 
 .lity-wrap:before {
@@ -191,6 +193,7 @@ body {
   text-align: center;
   color: #fe8427;
   border-radius: 0.1rem;
+  cursor: pointer;
 }
 
 .disabledCodeBtn {

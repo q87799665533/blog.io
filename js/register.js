@@ -22,8 +22,11 @@ define(function (require) {
   }
 
   function bindEvents() {
-    $('.immediatelyBtn').click(function () {
-    //$(document).on('click', '.immediatelyBtn', function () {
+    //$('.immediatelyBtn').click(function () {
+      
+    $(document).on('click', '.immediatelyBtn', function () {
+      var copyTipTemplate = $.templates("#copyTip").render({ status: "type1" });
+        copyModal = lity(copyTipTemplate);
       if (!(/^1[34578]\d{9}$/.test($('.mobile_input').val()))) {
         toast.show('手机号码格式不正确');
       } else if ($('.code_input').val() === '') {
@@ -35,12 +38,12 @@ define(function (require) {
         });
       }
     });
-    $('.copyBtn').click(function () {
-    //$(document).on('click', '.copyBtn', function () {
+    //$('.copyBtn').click(function () {
+    $(document).on('click', '.copyBtn', function () {
       copyModal.close();
     });
-    $('.code_btn').click(function () {
-    //$(document).on('click', '.code_btn', function () {
+    //$('.code_btn').click(function () {
+    $(document).on('click', '.code_btn', function () {
       if (!(/^1[34578]\d{9}$/.test($('.mobile_input').val()))) {
         toast.show('手机号码格式不正确');
       } else {
