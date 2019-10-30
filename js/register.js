@@ -22,7 +22,7 @@ define(function (require) {
   }
 
   function bindEvents() {
-    $('body').on('click', '.immediatelyBtn', function () {
+    $(document).on('click', '.immediatelyBtn', function () {
       if (!(/^1[34578]\d{9}$/.test($('.mobile_input').val()))) {
         toast.show('手机号码格式不正确');
       } else if ($('.code_input').val() === '') {
@@ -34,10 +34,10 @@ define(function (require) {
         });
       }
     });
-    $('body').on('click', '.copyBtn', function () {
+    $(document).on('click', '.copyBtn', function () {
       copyModal.close();
     });
-    $('body').on('click', '.code_btn', function () {
+    $(document).on('click', '.code_btn', function () {
       if (!(/^1[34578]\d{9}$/.test($('.mobile_input').val()))) {
         toast.show('手机号码格式不正确');
       } else {
