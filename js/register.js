@@ -46,27 +46,27 @@ define(function (require) {
       }
     });
 
-    // $('input').on('focus',function (){
-    //   focus = true;
-    // });
+    $('input').on('focus',function (){
+      focus = true;
+    });
 
     $('input').on('blur',function (){
-      alert(1);
-      //focus = false;
-      //if(!focus){
-        //setTimeout(function () {
+      //alert(1);
+      focus = false;
+      if(!focus){
+        setTimeout(function () {
         var ua = navigator.userAgent.toLowerCase();
         var version = navigator.appVersion.toLocaleLowerCase();
-        // alert(ua);
-        // alert(version);
+        //alert(ua);
+        //alert(version);
          if(ua.indexOf("micromessenger")> -1 && version.indexOf("iphone") > -1){//在iphone 微信中
-            //temporaryRepair();
-            alert(2);
-            window.scrollTo(0,0);
+            temporaryRepair();
+            // alert(2);
+            // window.scrollTo(0,0);
             //$('body').css({'margin-top':'0px'});
          }
-       //},200)
-      //}
+       },200)
+      }
     });
   }
 
