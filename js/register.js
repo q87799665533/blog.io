@@ -22,7 +22,7 @@ define(function (require) {
   }
 
   function bindEvents() {
-    $(document).on('click', '.immediatelyBtn', function () {
+    $(document).on('tap', '.immediatelyBtn', function () {
       if (!(/^1[34578]\d{9}$/.test($('.mobile_input').val()))) {
         toast.show('手机号码格式不正确');
       } else if ($('.code_input').val() === '') {
@@ -34,10 +34,10 @@ define(function (require) {
         });
       }
     });
-    $(document).on('click', '.copyBtn', function () {
+    $(document).on('tap', '.copyBtn', function () {
       copyModal.close();
     });
-    $(document).on('click', '.code_btn', function () {
+    $(document).on('tap', '.code_btn', function () {
       if (!(/^1[34578]\d{9}$/.test($('.mobile_input').val()))) {
         toast.show('手机号码格式不正确');
       } else {
@@ -51,19 +51,13 @@ define(function (require) {
     });
 
     $('input').on('blur',function (){
-      //alert(1);
       focus = false;
       if(!focus){
         setTimeout(function () {
         var ua = navigator.userAgent.toLowerCase();
         var version = navigator.appVersion.toLocaleLowerCase();
-        //alert(ua);
-        //alert(version);
-         if(ua.indexOf("micromessenger")> -1 && version.indexOf("iphone") > -1){//在iphone 微信中
+         if(ua.indexOf("micromessenger")>0 && version.indexOf("iphone") > 0){//在iphone 微信中
             temporaryRepair();
-            // alert(2);
-            // window.scrollTo(0,0);
-            //$('body').css({'margin-top':'0px'});
          }
        },200)
       }
