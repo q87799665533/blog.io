@@ -13,17 +13,7 @@
   <link type="text/css" rel="stylesheet" href="./modules/css/index.css" />
   <link type="text/css" rel="stylesheet" href="./modules/css/lity.css" media="all" />
   <link type="text/css" rel="stylesheet" href="./css/register.css?version=20191030" media="all" />
-
-  <script>
-    function errorHandler(e){
-      var error = 'error: '+ e.message+'\n file: '+ e.filename+'\n line: '+ e.lineno;
-      alert(error);
-    }
-    // for debug: alert弹出未处理的所有error信息
-    // window.addEventListener("error", errorHandler, false);
-  </script>
 </head>
-
 <body>
   <div class="body">
     <!-- <img src="./images/red.png" alt="" class="redImg"> -->
@@ -56,7 +46,7 @@
   <script>
     document.documentElement.style.fontSize = document.documentElement.clientWidth / 7.5 + 'px';
   </script>
-  <script>
+  <!-- <script>
     // 测试环境
     // var weixinpk = "gh_4f3052292084";
     // var appid = "wx8d06e3642dce3eed";
@@ -70,7 +60,7 @@
     var rootPath = "http://wechat.glsc.com.cn";
   </script>
   <script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
-  <script src="./modules/js/thinkwx.1.1.3.js"></script>
+  <script src="./modules/js/thinkwx.1.1.3.js"></script> -->
   <script src="./modules/js/require.js"></script>
   <script>
     require(['./js/config'], function () {
