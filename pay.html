@@ -29,7 +29,7 @@
           </div>
           <div class="list-item goods-list-item">
               <div class="subTitle">实际支付：</div>
-              <span id="finalAmount">￥99</span>
+              <span id="finalAmount"></span>
           </div>
         </div>
       </div>
@@ -42,9 +42,9 @@
         确认订购
       </div>
   </div>
-  <script src="../../modules/js/require.js"></script>
+  <script src="./modules/js/require.js"></script>
   <script>
-    require(['../../generic/js/config.sec'], function () {
+    require(['./js/config'], function () {
       require(['jquery'], function ($) {
         require(['jquery-mobile']);
         require(['js/pay.js']);

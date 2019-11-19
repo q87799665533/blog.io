@@ -167,13 +167,15 @@ define(function (require) {
   }
 
   function getAwards(query) {
-    // 中奖纪录
+    // 验证验证码
     apis.bindMobile(query).done(function(data) {
       if (data.code === 200){
       } else {
         toast.show(data.message);
       }
       window.location.href = './createOrder.html';
+      $('.coverContainer').fadeOut("fast");
+      sessionStorage.setItem("mobile",query.mobile);
     });
   };
 

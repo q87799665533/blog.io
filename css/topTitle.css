@@ -56,6 +56,5 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  line-height: 0.8rem;
-  padding-top: 0.4rem;
+  line-height: 1rem;
 }

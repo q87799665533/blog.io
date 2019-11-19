@@ -1,9 +1,5 @@
 define(function(require) {
-  var navigation = require('utils/navigation');
   var apis = require('apis/index');
-  var filemessage = require('utils/filemessage');
-  var localmessage = require('utils/localmessage');
-  var app = require('utils/app');
   var myAddressName;
   var myAddressTel;
   var myAddressArea;
@@ -14,11 +10,11 @@ define(function(require) {
   var addressId = "";
   
   function init() {
-    apis.payApis.newFetchEntityProducts('爱の投资日历').done(function(result) {
-      if (result.ERRORNO === '200') {
+    apis.newFetchEntityProducts('爱の投资日历').done(function(result) {
+      if (result.code === 200) {
         var data;
-        if(JSON.parse(result.DATA).length > 0){
-          data = JSON.parse(result.DATA)[0];
+        if(result.result.length > 0){
+          data = result.result[0];
           $('#goods-img img').attr('src',data.goodsImage);
           $('#goods-name').html(data.goodsName);
           price = data.goodsSpecificationList[0].discountPrice;
@@ -32,17 +28,17 @@ define(function(require) {
           return;
         }
       }else{
-        alert(result.ERRORMESSAGE.split(":")[1]);
+        alert(result.message.split(":")[1]);
       }
     });
     renderAddress('first');  
   }
 
   function renderAddress(type) {
-    apis.payApis.getUserRecAdd().done(function (result){
-      if (result.ERRORNO === '200') {
-        if(JSON.parse(result.DATA).length > 0){
-          data = JSON.parse(result.DATA)[0];
+    apis.getUserRecAdd().done(function (result){
+      if (result.code === 200) {
+        if(result.result.length > 0){
+          data = result.result[0];
           addressId = data.id;
           $('#address-container').html('<div id="my-address-container">'+
           '<div class="updateAddress">修改</div>'+
@@ -81,7 +77,7 @@ define(function(require) {
           },200);
         }
       }else{
-        alert(result.ERRORMESSAGE.split(":")[1]);
+        alert(result.message.split(":")[1]);
       }
     });
   }
@@ -92,20 +88,20 @@ define(function(require) {
         alert("请先添加收货地址！");
         return;
       }
-      apis.payApis.newCreateEntityOrder({
+      apis.newCreateEntityOrder({
         "addressId": addressId,
-        "mobile": '($MobileCode)',
+        "mobile": sessionStorage.getItem("mobile"),
         "orderGoods":{
           count: Number($('#goods-amount').html()),
           goodsId: goodsId,
           goodsSpecId: goodsSpecId,
         },
       }).done(function (result){
-        if (result.ERRORNO === '200') {
-          var orderId = JSON.parse(result.DATA).id;
-          navigation.toUrl('http://action:10061/?fullscreen=1&&secondtype=9&&url=/activity/activity2020Calendar/pay.html?orderId='+orderId);
+        if (result.code === 200) {
+          var orderId = result.result.id;
+          window.location.href = './pay.html?orderId='+orderId;
         }else{
-          alert(result.ERRORMESSAGE.split(":")[1]);
+          alert(result.message.split(":")[1]);
         }
       });
     });
@@ -179,7 +175,7 @@ define(function(require) {
       }
       var addressPicker = $("#rec-add-picker").val();
       if(addressId === ""){//没有地址，添加
-        apis.payApis.addUserRecAdd({
+        apis.addUserRecAdd({
           "isDefault": false,
           "recName": $('#rec-name').val(),//名字
           "recMobile": $('#rec-tel').val(),//收货电话
@@ -187,16 +183,16 @@ define(function(require) {
           "recCity": addressPicker.split(" ")[1],//城市
           "recDistrict": addressPicker.split(" ")[2],//区
           "recAddress": $("#rec-add").val(),//详细地址
-          "userMobile": '($MobileCode)'//用户电话
+          "userMobile": sessionStorage.getItem("mobile")//用户电话
         }).done(function (result){
-          if(result.ERRORNO === '200'){
+          if(result.code === 200){
             renderAddress('second');
           }else{
-            alert(result.ERRORMESSAGE.split(":")[1]);
+            alert(result.message.split(":")[1]);
           }
         });
       }else{//修改
-        apis.payApis.updateUserRecAdd({
+        apis.updateUserRecAdd({
           "isDefault": false,
           "id": addressId,
           "recName": $('#rec-name').val(),//名字
@@ -205,12 +201,12 @@ define(function(require) {
           "recCity": addressPicker.split(" ")[1],//城市
           "recDistrict": addressPicker.split(" ")[2],//区
           "recAddress": $("#rec-add").val(),//详细地址
-          "userMobile": '($MobileCode)'//用户电话
+          "userMobile": sessionStorage.getItem("mobile")//用户电话
         }).done(function (result){
-          if(result.ERRORNO === '200'){
+          if(result.code === 200){
             renderAddress('second');
           }else{
-            alert(result.ERRORMESSAGE.split(":")[1]);
+            alert(result.message.split(":")[1]);
           }
         });
       }
