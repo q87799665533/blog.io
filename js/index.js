@@ -167,6 +167,8 @@ define(function (require) {
   }
 
   function getAwards(query) {
+    alert(1);
+    window.location.href = './createOrder.html';
     // 验证验证码
     apis.bindMobile(query).done(function(data) {
       if (data.code === 200){
