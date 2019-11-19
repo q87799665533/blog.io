@@ -2,22 +2,100 @@
 <html lang="en">
 
 <head>
-  <title>双十一疯狂快递</title>
+  <title>爱の投资日历</title>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <meta name="viewport" content="viewport-fit=cover,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,target-densitydpi = medium-dpi"
-  />
+  <meta name="viewport" content="viewport-fit=cover,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,target-densitydpi = medium-dpi"/>
   <meta name="format-detection" content="telephone=no" />
   <meta name="apple-touch-fullscreen" content="yes" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <link type="text/css" rel="stylesheet" href="./modules/css/index.css" />
+  <link type="text/css" rel="stylesheet" href="./modules/css/lity.css" />
+  <link type="text/css" rel="stylesheet" href="./modules/css/swiper-3.4.2.min.css" media="all" />
+  <link type="text/css" rel="stylesheet" href="./css/topTitle.css" media="all" />
+  <link type="text/css" rel="stylesheet" href="./css/index.css?version=20191113" media="all" />
 </head>
 
 <body>
-  <script src="https://pv.sohu.com/cityjson?ie=utf-8"></script>
-  <script type="text/javascript">  
-      document.write(returnCitySN["cip"]+','+returnCitySN["cname"])  
-      document.write(111)  
+  <div class="header">
+    <div class="top_title">
+      <div class="top-title-container">
+        <span style="font-size: 0.34rem;">爱の投资日历</span>
+      </div>
+    </div>
+  </div>
+  <div class="wrapper">
+      <div class="top-swiper">
+          <div class="swiper-container" id="swiper-container-today">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                  <div class="top-picture"><img src="./img/main/lb_01.jpg"/></div>
+                </div>
+                <div class="swiper-slide">
+                  <div class="top-picture"><img src="./img/main/lb_02.jpg"/></div>
+                </div>
+                <div class="swiper-slide">
+                  <div class="top-picture"><img src="./img/main/lb_03.jpg"/></div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="top-picture"><img src="./img/main/lb_04.jpg"/></div>
+                  </div>
+              </div>
+            <div class="swiper-pagination" style="bottom:4px;"></div>
+          </div>
+          <div class="ins-lead ins-lead-absolute">
+            <div class="ins-lead-btn ins-lead-btn1 active"><img src="./img/main/icon_gy.png"/>公益项目</div>
+            <div class="ins-lead-btn ins-lead-btn2"><img src="./img/main/icon_xx.png"/>学校介绍</div>
+            <div class="ins-lead-btn ins-lead-btn3"><img src="./img/main/icon_spjs.png"/>商品介绍</div>
+          </div>
+          <div class="ins-lead ins-lead-fixed">
+            <div class="ins-lead-btn ins-lead-btn1"><img src="./img/main/icon_gy.png"/>公益项目</div>
+            <div class="ins-lead-btn ins-lead-btn2"><img src="./img/main/icon_xx.png"/>学校介绍</div>
+            <div class="ins-lead-btn ins-lead-btn3"><img src="./img/main/icon_spjs.png"/>商品介绍</div>
+          </div>
+      </div>
+      <img id="img1" src="img/main/main1.jpg" alt="">
+      <img id="img2" src="img/main/main2.jpg" alt="">
+      <img id="img3" src="img/main/main3.jpg" alt="">
+      <div class="top-btn">
+          <img src="img/main/bottom.jpg" alt="">
+          <div class="buttonContainer">
+            <img id="jl" src="img/main/btn_jl.png">
+            <img id="gm" src="img/main/btn_gm.png">
+          </div>
+        </div>
+  </div>
+  <div id="lity-tips" class="lity-hide">
+      <div class="tips-wrap">
+        <img id="lity-img" src="./img/tips.png" alt="">
+      </div>
+  </div>
+  <div class="coverContainer" style="display: none;">
+    <div class="bindContent">
+      <div class="des">请先验证手机号后进行购买！</div>
+      <div class="inputBox">
+        <input type="text" placeholder="手机号码" class="mobile_input">
+      </div>
+      <div class="inputBox">
+        <input type="text" placeholder="短信验证" class="code_input">
+        <input class="code_btn" type="button" value="获取验证码"/>
+      </div>
+      <div class="immediatelyBtn">立即验证</div>
+    </div>
+  </div>
+  <script>
+    document.documentElement.style.fontSize = document.documentElement.clientWidth / 7.5 + 'px';
   </script>
+  <script src="./modules/js/require.js"></script>
+  <script>
+    require(['./js/config'], function () {
+      require(['jquery'], function ($) {
+        require(['jquery-mobile']);
+        require(['js/index.js']);
+      });
+    });
+  </script>
+
 </body>
 
 </html>

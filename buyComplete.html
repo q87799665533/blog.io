@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>购买完成</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="viewport-fit=cover,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,target-densitydpi = medium-dpi"
+	/>
+	<meta name="format-detection" content="telephone=no" />
+	<meta name="apple-touch-fullscreen" content="yes" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <link type="text/css" rel="stylesheet" href="./modules/css/index.css" />
+  <link type="text/css" rel="stylesheet" href="./css/buyComplete.css" media="all" />
+</head>
+
+<body>
+  <div class="header">
+    <div class="iosVideoTop"></div>
+    <div class="androidVideoTop"></div>
+    <div class="top_title">
+    <div class="iosTop"></div>
+    <div class="icon_box box1"><img src="./img/buyComplete/back_g.png" /></div>
+    </div>
+  </div>
+  <div class="main">
+    <div class="up">
+        <script id="stateContainer" type="text/x-jsrender">
+          {{if state === 'FINISH'}}
+            <div class="buy_state_icon"><img class="buy_success_icon" src="./img/buyComplete/pic_cg.png" /></div>
+            <div class="buy_success_span"><img src="./img/buyComplete/icon_ok.png" /><span>购买成功！</span></div>
+            <div id="gobackToProduct">返回主页</div>
+          {{else state === 'WAITING' }}
+            <div class="buy_success_span" style="margin-top:2.5rem;"><span>请稍等，正在为您更新订单状态~~</span></div>
+          {{else}}
+            <div class="buy_state_icon"><img class="buy_success_icon" src="./img/buyComplete/pic_sb.png" /></div>
+            <div class="buy_success_span"><span>购买未成功！</span></div>
+            <div id="continueToPay">继续支付</div>
+            <div id="gobackToProduct">返回产品</div>
+          {{/if}}
+        </script>
+    </div> 
+  </div>
+  <script>
+    document.documentElement.style.fontSize = document.documentElement.clientWidth / 7.5 + 'px';
+  </script>
+  <script src="../../modules/js/require.js"></script>
+  <script>
+    require(['../../generic/js/config.sec'], function () {
+      require(['jquery'], function ($) {
+        require(['jquery-mobile']);
+        require(['js/buyComplete.js']);
+      });
+    });
+  </script>
+</body>
+
+</html>

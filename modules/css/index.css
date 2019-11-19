@@ -1,0 +1,57 @@
+@charset "utf-8";:root{--greycolor:#999;--borderColor:#eee;--marginTop:0.1rem;--themeColor:#fc531f}a,body,dd,div,dl,dt,fieldset,form,h1,h2,h3,h4,h5,h6,img,input,li,ol,p,span,table,td,textarea,tr,ul{margin:0;padding:0;font-family: "PingFang SC", "helvetica";}html{-webkit-text-size-adjust:100%}input,select,textarea{outline:0;border:none;background:0 0}textarea{resize:none}a{text-decoration:none;color:#656565}li,ul{list-style:none}em,i{font-style:normal}*{-webkit-tap-highlight-color:rgba(255,0,0,0)}.bg-logo{touch-action:none;-webkit-touch-action:none;position:absolute;top:0;right:0;bottom:0;left:0;z-index:1999;background:url(../../common/img/bg-logo.gif) center no-repeat #f4f5f6;background-size:3.3rem 1.4rem}button,input,select{-webkit-appearance:none}#wrapper{width:100%}@media screen and (max-width:375px){html{font-size:44px}}@media screen and (min-width:375px) and (max-width:414px){html{font-size:50px}}@media screen and (min-width:414px){html{font-size:55px}}
+
+.canvas_loading_all {
+  position: absolute;
+  top: 38.2%;
+  left: 50%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  width: 1.28rem;
+  height: 1.28rem;
+  margin-top: -0.64rem;
+  margin-left: -0.64rem;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 0.2rem;
+  overflow: hidden;
+}
+
+
+.loading_mask {
+  position: absolute;  
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: transparent;
+}
+
+.canvas_loading_all > canvas {
+  -webkit-transform: scale(0.5);
+          transform: scale(0.5);
+  -webkit-transform-origin: top left;
+          transform-origin: top left;
+}
+
+.canvas_loading_all::after {
+  position: absolute;
+  bottom: 0.3rem;
+  right: 0.16rem;
+  content: '';
+  display: block;
+  width: 0.28rem;
+  height: 0.06rem;
+  background-color: rgba(255, 255, 255, 0.88);
+  border-radius: 0.2rem;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  overflow: hidden;
+}
+body {
+    user-select: none;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none;
+}
+
+.unablebtn {
+  background-color: #ccc !important;
+}

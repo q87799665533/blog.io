@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>支付订单</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="viewport-fit=cover,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,target-densitydpi = medium-dpi"
+  />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="apple-touch-fullscreen" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <link type="text/css" rel="stylesheet" href="./modules/css/index.css" />
+  <link type="text/css" rel="stylesheet" href="./css/pay.css" media="all" />
+</head>
+
+<body>
+  <div id="details">
+      <div class="orderIns ins">
+        <div class="mainTitle">商品信息：</div>
+        <div class="goodsTitle"><img src="./img/pay/icon_al.png"/><span class="goodsName"></span></div>
+        <div class="list">
+          <div class="list-item goods-list-item">
+            <span class="subTitle">商品总价：</span>
+            <div>
+              <span id="price2"></span>
+            </div>
+          </div>
+          <div class="list-item goods-list-item">
+              <div class="subTitle">实际支付：</div>
+              <span id="finalAmount">￥99</span>
+          </div>
+        </div>
+      </div>
+      <div class="payIns ins">
+          <div class="mainTitle">支付方式：</div>
+          <div class="list">
+          </div>
+      </div>
+      <div id="payBtn">
+        确认订购
+      </div>
+  </div>
+  <script src="../../modules/js/require.js"></script>
+  <script>
+    require(['../../generic/js/config.sec'], function () {
+      require(['jquery'], function ($) {
+        require(['jquery-mobile']);
+        require(['js/pay.js']);
+      });
+    });
+  </script>
+</body>
+
+</html>

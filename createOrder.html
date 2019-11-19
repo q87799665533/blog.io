@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>确认订单</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="viewport-fit=cover,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,target-densitydpi = medium-dpi"
+	/>
+	<meta name="format-detection" content="telephone=no" />
+	<meta name="apple-touch-fullscreen" content="yes" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <link type="text/css" rel="stylesheet" href="./modules/css/jquery-weui.css" media="all" />
+  <link type="text/css" rel="stylesheet" href="./modules/css/weui.min.css" media="all" />
+  <link type="text/css" rel="stylesheet" href="./modules/css/index.css" />
+  <link type="text/css" rel="stylesheet" href="./css/createOrder.css" media="all" />
+</head>
+
+<body>
+  <div class="wrap">
+      <div id="address-container">
+      </div>
+      <div id="goods-container">
+        <div id="goods-title">商品信息：</div>
+        <div id="goods-ins">
+          <div id="goods-img">
+            <img />
+          </div>
+          <div id="goods-name"></div>
+          <div id="goods-price"></div>
+        </div>
+        <div id="goods-bottom">
+          <div id="goods-del">配送方式：圆通包邮</div>
+          <div id="goods-amount-container">
+            <div class="goods-amount-btn" id="goods-amount-decrease">-</div>
+            <div id="goods-amount">1</div>
+            <div class="goods-amount-btn" id="goods-amount-increase">+</div>
+          </div>
+        </div>
+        <div id="goods-left">剩余<span></span>本</div>
+      </div>
+      <div id="order-ins-container">
+        <div >共<span id="order-amount">1</span>件，合计<span id="order-price"></span></div>
+        <div id="makeOrder"><img src="./img/createOrder/btn_tj.png" /></div>
+      </div>
+  </div>
+
+  <div class="wrap2">
+    <input id="rec-name" placeholder="收件人姓名"/>
+    <input id="rec-tel" placeholder="手机号码"/>
+    <input id="rec-add-picker" placeholder="省 市 区"/>
+    <input id="rec-add" placeholder="详细地址"/>
+    <div id="addNewAddress"><img src="./img/createOrder/btm_add.png"/></div>
+    <div id="goBack">返回查看商品信息</div>
+  </div>
+  <script>
+    document.documentElement.style.fontSize = document.documentElement.clientWidth / 7.5 + 'px';
+  </script>
+  <script src="../../modules/js/require.js"></script>
+  <script>
+    require(['../../generic/js/config.sec'], function () {
+      require(['jquery'], function ($) {
+        require(['jquery-mobile']);
+        require(['weui']);
+        require(['cityPicker']);
+        require(['js/createOrder.js']);
+      });
+    });
+  </script>
+</body>
+
+</html>

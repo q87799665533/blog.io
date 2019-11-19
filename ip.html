@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>双十一疯狂快递</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="viewport-fit=cover,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,target-densitydpi = medium-dpi"
+  />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="apple-touch-fullscreen" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+</head>
+
+<body>
+    <div>您查询的IP地址来自：<span id='location'></span></div>
+   <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+  <!-- <script src="https://pv.sohu.com/cityjson?ie=utf-8"></script>
+  <script type="text/javascript">  
+      document.write(JSON.stringify(returnCitySN))  
+      document.write(111)  
+  </script> -->
+  <script>
+    $(document).ready(function(){
+   //$.getScript("http://opendata.baidu.com/api.php?query=192.168.1.1&co=&resource_id=6006&t=&ie=utf8&oe=gbk&cb=mrz&format=json");
+   $.ajax({
+     url:'http://opendata.baidu.com/api.php?query=61.160.96.18&co=&resource_id=6006&t=&ie=utf8&oe=gbk&cb=mrz&format=json',
+     dataType:'jsonp',
+     success: function (res){
+       console.log(JSON.stringify(res));
+     }
+   });
+  //  $.ajax({
+  //    url:'http://whois.pconline.com.cn/jsFunction.jsp?callback=jsShow&ip=114.114.114.114',
+  //    dataType:'jsonp',
+  //    success: function (res){
+  //      console.log(JSON.stringify(res));
+  //    }
+  //  });
+})
+function mrz(res){
+  $('#location').html(res['data'][0]['location']);
+  console.log(JSON.stringify(res));
+}
+  </script>
+</body>
+
+</html>

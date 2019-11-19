@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>我的订单</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="viewport-fit=cover,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,target-densitydpi = medium-dpi"
+	/>
+	<meta name="format-detection" content="telephone=no" />
+	<meta name="apple-touch-fullscreen" content="yes" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <link type="text/css" rel="stylesheet" href="./modules/css/index.css" />
+  <link type="text/css" rel="stylesheet" href="./css/myOrder.css" media="all" />
+</head>
+
+<body>
+  <div class="nav">
+      <div id="nav0">
+        已完成
+      </div>
+      <div id="nav1">
+        待支付
+      </div>
+  </div>
+  <ul class="order-list " id="list0" style="display:none">
+      <script id="order-list0" type="text/x-jsrender">
+        <div class="no-order" id="no-finished-order" style="display:none"></div>
+         {{for finishedOrderList}}
+         <li class="card" data-orderId={{:id}} data-orderState={{:orderState}}>
+          <div class="top">
+              <div class="left">
+                  <img src="{{:orderGoods.goods.goodsImage}}" />
+              </div>
+              <div class="right">
+                  <div class="orderTitle">
+                    <span class="orderName">{{:orderGoods.goodsName}}*{{:orderGoods.count}}</span>
+                    {{if orderState === 'WATING_PAY'}}
+                      <span class="state waitingPay">待支付</span>
+                    {{else orderState === 'INVALID'}}
+                      <span class="state invalid">已失效</span>
+                    {{else orderState === 'FINISH'}}
+                      <span class="state finish">已完成</span>
+                    {{else orderState === 'WATING_DELIVERY'}}
+                      <span class="state finish">待发货</span>
+                    {{else orderState === 'PENDING'}}
+                      <span class="state finish">发货中</span>
+                    {{else orderState === 'FULL_REFUND'}}
+                      <span class="state refund">已退款</span>
+                    {{/if}}
+                  </div>
+                  <div class="realAmount">实付金额：{{:payPrice}}元</div>
+                  <div class="createTime">创建时间：{{:createTime}}</div>
+              </div>
+          </div>
+          <div class="middle">
+            <div><img src="./img/myOrder/icon_dz.png" /></div>
+            <div class="middle-logis"></div>
+          </div>
+          <div class="bottom">
+            <div class="buyAgain buyBtn btns" data-type={{:orderGoods.goodsName}}>再次购买</div>
+          </div>
+        </li>
+         {{/for}}
+      </script>
+  </ul>
+  <ul class="order-list" id="list1" style="display:none">
+      <script id="order-list1" type="text/x-jsrender">
+        <div class="no-order" id="no-paying-order" style="display:none"></div>
+        {{for payingOrderList}}
+            <li class="card" data-orderId={{:id}}>
+              <div class="top">
+                  <div class="left">
+                      <img src="{{:orderGoods.goods.goodsImage}}" />
+                  </div>
+                  <div class="right">
+                      <div class="orderTitle">
+                          <span class="orderName">{{:orderGoods.goodsName}}*{{:orderGoods.count}}</span>
+                          <span class="state waitingPay">待支付</span>
+                          <div class="timer" data-countdown={{:paymentCountdown}}>
+                            <div class="minute">{{:~renderTimer(paymentCountdown).minute}}</div>
+                            <span style="color:#ff9874">:</span>
+                            <div class="second">{{:~renderTimer(paymentCountdown).second}}</div>
+                          </div>
+                      </div>
+                      <div class="realAmount">实付金额：{{:payPrice}}元</div>
+                      <div class="createTime">创建时间：{{:createTime}}</div>
+                  </div>
+              </div>
+              <div class="bottom">
+                <div class="continueBuy buyBtn btns" data-orderId={{:id}}>继续支付</div>
+              </div>
+            </li>
+         {{/for}}
+      </script>
+  </ul>
+  <script>
+    document.documentElement.style.fontSize = document.documentElement.clientWidth / 7.5 + 'px';
+  </script>
+  <script src="../../modules/js/require.js"></script>
+  <script>
+    require(['../../generic/js/config.sec'], function () {
+      require(['jquery'], function ($) {
+        require(['jquery-mobile']);
+        require(['js/myOrder.js']);
+      });
+    });
+  </script>
+</body>
+
+</html>
