@@ -24,7 +24,7 @@ define(function() {
       toast.css({
         width:  mOption.width || '200px',
         display: 'none',
-        position: 'absolute',
+        position: 'fixed',
         left: '50%',
         'margin-left': mOption.marginLeft || '-100px',
         bottom: bottom,
