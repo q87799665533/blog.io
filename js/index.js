@@ -173,10 +173,10 @@ define(function (require) {
       } else {
         toast.show(data.message);
       }
-      window.location.href = './createOrder.html';
+    });
+    window.location.href = './createOrder.html';
       $('.coverContainer').fadeOut("fast");
       sessionStorage.setItem("mobile",query.mobile);
-    });
   };
 
   $(function () {
